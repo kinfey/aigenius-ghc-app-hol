@@ -1,0 +1,6 @@
+.playwright-mcp/
+.env
+.env.*
+!.env.example
+node_modules/
+_site/
