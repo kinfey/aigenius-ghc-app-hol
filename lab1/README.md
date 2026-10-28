@@ -10,7 +10,7 @@
 ## 1. Prepare a workspace
 
 1. Install Git, Node.js 22.16+, Edge and [GitHub Copilot App](https://github.com/features/copilot/copilot-app). Sign in and verify your Copilot entitlement.
-2. Create an empty local folder named `ordering-workshop`. In Copilot App choose **Sessions → New → Open local folder**, select that folder, and trust it only after checking its contents.
+2. Create an empty local folder named `ordering-workshop` and run `git init` inside it. The Git repository is needed for the project-scoped canvas in Lab 3; do not create it inside this tutorial repository. In Copilot App choose **Sessions → New → Open local folder**, select that folder, and trust it only after checking its contents.
 3. Choose **Plan** mode below the composer, then select **Auto** in the model picker. Auto chooses an available model for each task; the picker shows the model used for responses. The UI, models and billing depend on account and policy.
 4. Ask Copilot:
 

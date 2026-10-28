@@ -10,7 +10,7 @@
 ## 1. 准备工作区
 
 1. 安装 Git、Node.js 22.16 以上、Edge 和 [GitHub Copilot App](https://github.com/features/copilot/copilot-app)。登录并确认账号有 Copilot 权限。
-2. 创建空的本地文件夹 `ordering-workshop`。在 Copilot App 中选择 **Sessions → New → Open local folder**，选中该文件夹；检查内容后再授予信任。
+2. 创建空的本地文件夹 `ordering-workshop`，并在其中运行 `git init`。实验三的项目级画布需要 Git 仓库；不要在本教程仓库内创建该项目。在 Copilot App 中选择 **Sessions → New → Open local folder**，选中该文件夹；检查内容后再授予信任。
 3. 在输入框下选择 **Plan** 模式，然后在模型选择器中选择 **Auto**。Auto 根据任务选择可用模型；选择器会显示响应所用的模型。界面、模型和计费取决于账号及策略。
 4. 向 Copilot 提交：
 
