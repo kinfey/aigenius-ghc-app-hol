@@ -2,7 +2,11 @@
 
 [English](https://kinfey.github.io/aigenius-ghc-app-hol/lab2/) · [实验一](../lab1/zh.html) · [下一步：实验三](../lab3/zh.html)
 
-**目标：**将 Copilot App 连接麦当劳中国 MCP 服务、查询优惠信息，并为实验一应用添加可选的只读优惠页面。建议 60 分钟。
+**目标：**将 Copilot App 连接麦当劳中国 MCP 服务，查询优惠信息并检查预置只读优惠适配器。用时 **15 分钟**，属于 **60 分钟课程**的一部分（20 + 15 + 25）。
+
+**限时路线：**0–3 分钟理解两个客户端的边界；3–8 分钟验证课前配置好的 MCP 连接并发现只读工具；8–12 分钟查询真实优惠、检查来源和条件；12–15 分钟查看预置适配器及一个失败状态。账户激活、同意条款、私下准备 Token 和安装依赖均在**课前**完成。第 4 节完整实现提示词作为参考/课后练习，限时课堂使用已提供的 [`lab2/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab2/code)。
+
+共享示例现在默认进入实验三的真实引导向导。如需查看原实验二菜单/优惠界面，显式打开 `http://127.0.0.1:5173/?demo=1`；其优惠接口由 `OFFERS_MODE` 控制（默认 `mock`，仅私下启用后为 `live`）。这不改变默认向导只使用真实服务的行为。
 
 ![在浏览器中截取的麦当劳 MCP 公开文档](images/mcd-doc.png)
 *参考：[麦当劳 MCP 文档](https://open.mcd.cn/mcp/doc)和[服务指南](https://github.com/M-China/mcd-mcp-server)。*

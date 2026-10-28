@@ -1,0 +1,38 @@
+.workflow { min-width: 0; }
+.mock-banner { margin: 22px 0; font-size: 13px; line-height: 1.8; }
+.workflow-steps { display: flex; flex-wrap: wrap; list-style: none; gap: 12px; padding: 0; margin: 24px 0; }
+.workflow-steps li { display: flex; align-items: center; gap: 6px; color: #748276; font-size: 12px; }
+.workflow-steps li > span { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #e8eae4; }
+.workflow-steps .done { color: #285e3b; }
+.workflow-steps .done > span { background: #dcebdd; }
+.workflow-panel { margin-bottom: 18px; padding: 24px; background: white; border: 1px solid #e2e8de; border-radius: 14px; }
+.workflow-panel h3 { margin-top: 0; font-size: 17px; }
+.workflow-panel p { font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.workflow fieldset { border: 0; padding: 0; margin: 20px 0; }
+.workflow legend, .field { font-size: 13px; font-weight: 600; }
+.method-options { display: flex; gap: 24px; margin-top: 12px; }
+.method-options label { display: flex; align-items: center; gap: 7px; font-size: 14px; }
+.workflow input { accent-color: #285e3b; width: 18px; height: 18px; }
+.field { display: grid; gap: 10px; margin: 20px 0; }
+.field select { font: inherit; padding: 12px; width: 100%; min-width: 0; color: #243829; background: #fafbf8; border: 1px solid #c9d6c7; border-radius: 8px; }
+.field select:focus-visible { outline: 3px solid #e8a933; outline-offset: 3px; }
+.field small, .workflow-note { color: #68786b; font-size: 12px; font-weight: 400; line-height: 1.8; }
+.review-items { list-style: none; margin: 20px 0; padding: 0; }
+.review-items li, .price-breakdown > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; font-size: 13px; }
+.review-items li { border-bottom: 1px solid #eef0ea; }
+.price-breakdown dd { margin: 0; }
+.price-breakdown .grand-total { border-top: 1px dashed #c9d6c7; margin-top: 10px; font-size: 20px; font-weight: 700; color: #285e3b; }
+.workflow-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.workflow-actions button, .reset-confirm button { border: 1px solid #c9d6c7; background: #f3f7ef; color: #285e3b; border-radius: 8px; padding: 12px 16px; }
+.workflow-actions .primary-button { background: #285e3b; color: white; }
+.workflow-actions button:disabled { background: #eceee8; color: #727d73; cursor: not-allowed; }
+.text-button { border: 0; background: none; color: #285e3b; text-decoration: underline; padding: 6px; }
+.status-line { background: #edf5e9; border-radius: 8px; padding: 14px; }
+.reset-confirm button { margin-right: 10px; }
+.storage-notice { margin: 20px 6%; }
+@media (max-width: 700px) {
+  .workflow-panel { padding: 18px; }
+  .workflow-actions { flex-direction: column; }
+  .nav { gap: 18px; }
+  .workflow-steps { gap: 10px; }
+}

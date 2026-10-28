@@ -2,13 +2,16 @@
 
 [简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/zh.html) · [GitHub repository](https://github.com/kinfey/aigenius-ghc-app-hol)
 
-In this hands-on workshop, you will use **GitHub Copilot App** to build a responsive ordering application, connect to the McDonald's China MCP service, and create a human-in-the-loop ordering canvas. This is an independent educational exercise, not an official McDonald's product.
+In this **60-minute** hands-on workshop, you will use **GitHub Copilot App** to build a responsive ordering application, connect to the McDonald's China MCP service, and run a human-in-the-loop guided application in the Browser canvas. This is an independent educational exercise, not an official McDonald's product.
 
 | Lab | Outcome | Suggested time |
 | --- | --- | --- |
-| [Lab 1: Build and route](lab1/) | Responsive front end, local API, Auto and optional Decision Router | 90 min |
-| [Lab 2: Connect MCP](lab2/) | Query real coupon information with your own account | 60 min |
-| [Lab 3: Create a canvas](lab3/) | A visible ordering workflow with explicit approval gates | 60 min |
+| [Lab 1: Build and route](lab1/) | Responsive front end, local API and a focused Auto task | 20 min |
+| [Lab 2: Connect MCP](lab2/) | Connect MCP and query real read-only coupon information | 15 min |
+| [Lab 3: Guided ordering in a canvas](lab3/) | Real MCP wizard, menu handling and explicit approval gates | 25 min |
+| **Total** | **Three labs, one continuous application** | **60 min** |
+
+Install tools, restore sample dependencies, sign in, and prepare your own private MCP token **before class**. Use the included starter implementations to keep the live work bounded. Decision Router/Azure deployment, repeated model benchmarks, native SDK extension authoring, real purchasing and payment are optional after-class work, not additional requirements within the 60 minutes.
 
 ## Before you start
 
@@ -20,6 +23,8 @@ In this hands-on workshop, you will use **GitHub Copilot App** to build a respon
 
 Each lab has an English `README.md` and a Simplified Chinese `README.zh.md`. The guides distinguish public-documentation screenshots from actual App and Edge captures of the workshop implementation. Real-service screenshots must never expose credentials or account information.
 
-**Current status:** Labs 1–2 include sample code and implementation captures. Lab 3 is a proposed exercise; its canvas code and implementation screenshots are not yet available.
+**Current status:** All three labs include runnable code and implementation captures. Lab 3 reuses [`lab2/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab2/code) rather than duplicating the application, with complete [English](lab3/) and [Chinese](lab3/zh.html) instructions, generated-file links and screenshots. Its Browser canvas application is implemented; a registered custom SDK canvas extension is a separate optional deliverable. Live connection/menu screenshots are distinguished from the explicitly labeled offline confirmation fixture; no real order or payment was made for the workshop evidence.
+
+GitHub Pages hosts the bilingual guides and screenshots, not the credential-bearing Python application. Run that application locally using its README.
 
 Start with [Lab 1](lab1/).

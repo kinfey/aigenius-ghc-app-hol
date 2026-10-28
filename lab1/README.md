@@ -2,7 +2,9 @@
 
 [简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/zh.html) · [Workshop home](../) · [Next: Lab 2](../lab2/)
 
-**Goal:** Build a local full-stack ordering prototype that works on desktop, tablet and phone, then compare Auto with an optional, separately launched Decision Router. Allow 90 minutes.
+**Goal:** Build and inspect a local full-stack ordering prototype across desktop, tablet and phone, and practice a focused Auto task. Allow **20 minutes** of the **60-minute workshop** (20 + 15 + 25).
+
+**Timed route:** 0–3 min inspect the preinstalled starter; 3–12 min plan and implement one bounded UI/API improvement with Auto; 12–17 min inspect responsive layouts and checkout; 17–20 min run a focused test and record usage. Installation and dependency restoration are pre-class work. Use [`lab1/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab1/code) as the prepared baseline if generation takes longer. The detailed from-scratch instructions remain reference material; repeated benchmarks and section 4's Decision Router/Azure setup are **after-class extensions**, not part of these 20 minutes.
 
 ![Public GitHub documentation about Copilot App sessions, captured in a browser](images/copilot-sessions-doc.png)
 *Reference: [GitHub's session documentation](https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions). Actual controls may differ by app version.*
@@ -10,7 +12,7 @@
 ## 1. Prepare a workspace
 
 1. Install Git, Node.js 22.16+, Edge and [GitHub Copilot App](https://github.com/features/copilot/copilot-app). Sign in and verify your Copilot entitlement.
-2. Create an empty local folder named `ordering-workshop` and run `git init` inside it. The Git repository is needed for the project-scoped canvas in Lab 3; do not create it inside this tutorial repository. In Copilot App choose **Sessions → New → Open local folder**, select that folder, and trust it only after checking its contents.
+2. Before class, create a local folder named `ordering-workshop` and run `git init` inside it; prepare the starter there if using the timed route. Git supports version control and the optional after-class SDK extension; Lab 3's existing Browser canvas does not require authoring such an extension. Do not nest the learner workspace inside this tutorial repository. In Copilot App choose **Sessions → New → Open local folder**, select that folder, and trust it only after checking its contents.
 3. Choose **Plan** mode below the composer, then select **Auto** in the model picker. Auto chooses an available model for each task; the picker shows the model used for responses. The UI, models and billing depend on account and policy.
 4. Ask Copilot:
 
@@ -86,7 +88,7 @@ npm start -- -C /path/to/ordering-workshop -p "$TASK" -- --no-custom-instruction
 
 `TASK` must be defined in this terminal too. The router's `-C` option selects the execution workspace; do not confuse it with the router's own directory. Compare each usage JSON's actual model, input, output, cached tokens and `totalNanoAiu` (divide by one billion for credits); `lab1/code/compare_usage.py` prints the table and `usage-example/` contains sanitized figures from the run above. Review generated plans against the actual code: for example, some of these plans suggest form validation even though the sample checkout has no form. Run repeated trials with comparable cache conditions and real acceptance tests before choosing a model.
 
-## 4. Optional: Microsoft-Decision-1 and Decision Router
+## 4. After class, optional: Microsoft-Decision-1 and Decision Router
 
 **Important:** The private router's documented native integration is an **experimental Copilot CLI** extension, not a verified model-picker integration for Copilot App. These steps run in a separate terminal session against the same project; continue the rest of the workshop in the App. Do not claim that a routed CLI turn automatically configures or routes App turns. Router access may be restricted; if unavailable, continue with Auto.
 
