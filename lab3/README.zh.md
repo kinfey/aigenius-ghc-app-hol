@@ -4,6 +4,8 @@
 
 **目标：**在 Copilot App 中使用 `/create-canvas` 创建共享交互式点餐工作流，使用实验二的 MCP 连接。默认模拟运行；真实下单和支付必须分别由用户决定。建议 60 分钟。
 
+> **实现状态：**本指南目前是待实践的实验设计，并非已完成的画布示例。当前编写环境未提供 `/create-canvas` 必需的扩展脚手架和重载工具，因此 `lab3/code` 和实现截图尚未完成。
+
 ![在浏览器中截取的 GitHub 画布公开文档](images/canvas-doc.png)
 *参考：[画布扩展文档](https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-canvas-extensions)。这里是 App 画布，不是 Power Apps 画布。*
 

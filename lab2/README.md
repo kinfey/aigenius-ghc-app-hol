@@ -17,11 +17,11 @@ This service is for mainland China. Coupon availability, prices and eligible sto
 
 1. In Edge open [open.mcd.cn](https://open.mcd.cn/), enter the MCP section, sign in with your own account, and open the console.
 2. Activate the MCP service, review and accept the current terms, and obtain your personal MCP Token. Do not copy it into chat, screenshots, source code, Git or browser-side storage. If exposed, revoke/rotate it.
-3. Keep the official documentation open. The server address is `https://mcp.mcd.cn`, using Streamable HTTP and the `Authorization` header. The value is **the token as issued**; do not assume an extra `Bearer` prefix unless the provider's current instructions require it.
+3. Keep the official documentation open. The server address is `https://mcp.mcd.cn`, using Streamable HTTP. Set the header to `Authorization: Bearer <YOUR_MCP_TOKEN>`; include the word `Bearer` and a space before your token.
 
 ## 3. Connect Copilot App
 
-1. In the App sidebar choose **Customize → MCP**, add a custom remote server, and name it `mcd-mcp`. Select **HTTP / Streamable HTTP**, URL `https://mcp.mcd.cn`, and add an `Authorization` header with your own token. Use the private settings UI, not a repository file. If your app version exposes JSON instead of fields, use the same fields and enter the token privately.
+1. In the App sidebar choose **Customize → MCP**, add a custom remote server, and name it `mcd-mcp`. Select **HTTP / Streamable HTTP**, URL `https://mcp.mcd.cn`, and set the `Authorization` header to `Bearer <YOUR_MCP_TOKEN>`. Use the private settings UI, not a repository file. If your app version exposes JSON instead of fields, use the same fields and enter the token privately.
 2. Save, enable, and check **Customize → Installed** for the server status. Restart the session if necessary. If your installation requires sign-in, choose **Sign in** on that server's Installed row or actions menu. Do not add a credential-bearing `.mcp.json` to the project.
 3. In the existing ordering session, ask:
 
@@ -34,12 +34,28 @@ This service is for mainland China. Coupon availability, prices and eligible sto
 
 1. Return to the Lab 1 project and choose **Plan**. Ask:
 
-   > Extend the existing responsive app with an Offers page and a server-side coupon adapter. Default to mock data. When explicitly enabled locally, the Node server should use the current MCP SDK and the documented Streamable HTTP connection to call only advertised read-only coupon tools. Read the token from a local environment variable configured by me, never from browser code or chat. Do not create orders or claim coupons. Show source, update time, conditions, loading, empty and error states; never fabricate offers. Add offline adapter/UI tests and document the run commands.
+   > Extend the existing responsive app with an Offers page and a server-side coupon adapter. Default to mock data. When explicitly enabled locally, the Python server should use the current MCP SDK and the documented Streamable HTTP connection to call only advertised read-only coupon tools. Read the token from a local environment variable configured by me, never from browser code or chat. Do not create orders or claim coupons. Show source, update time, conditions, loading, empty and error states; never fabricate offers. Add offline adapter/UI tests and document the run commands.
 
-2. Review the plan before execution. The backend must use the live tool list and schemas, validate responses, return a minimal normalized result, and propagate authentication/network errors. Bind the development server to loopback; do not expose an unauthenticated token-backed proxy to other users. Do not put keys in URLs, logs, browser bundles or Git.
+2. Review the plan before execution. The sample checks the live tool list and required arguments, then displays provider content as untrusted text rather than assuming a stable coupon schema. It does not normalize coupon details. Bind the development server to loopback; do not expose an unauthenticated token-backed proxy to other users. Do not put keys in URLs, logs, browser bundles or Git.
+
+The implementation is in [`lab2/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab2/code). In this actual Copilot App capture the sample README and Python MCP setup are open; the conversation and sidebar were cropped.
+
+![Copilot App showing the Lab 2 implementation](images/copilot-mcp-code.png)
+
 3. Approve implementation and inspect the diff. Configure the token **yourself** in an ignored, permission-restricted local environment file or the application's documented secret mechanism; do not ask Copilot to read it. Enable live mode only on your own machine. Confirm the application server is a separate MCP client, not the App connection.
 4. Run the reported tests and launch commands. In Edge, open Offers and check mobile, tablet and desktop layouts. Check mock mode works offline, live mode shows actual source/conditions, an empty response stays empty, and an invalid or unavailable server shows a clear error with retry. Never publish account-specific results.
-5. If the MCP connection fails: verify the App/server are using HTTP, the correct URL and your own unexpired token; review service status and consent. For 401 check credentials; for 429 slow down and retry later. Do not expose the token when asking for help.
+
+The following Edge capture shows the actual application in **mock mode**; it is not evidence of a successful live connection.
+
+![Mock offers in the running application](images/edge-offers.png)
+
+The following Edge capture shows the **actual live connection** after correcting the authorization header. The Python client discovered and called `available-coupons`; the provider reported success. The returned account-dependent content is deliberately hidden in this screenshot.
+
+![Live MCP source shown in Edge; provider content redacted](images/edge-mcp-live-redacted.png)
+
+5. If the MCP connection fails: verify Streamable HTTP, the URL, the `Bearer` prefix and your own unexpired token; review service status and consent. The official guide documents 401 for missing/invalid/expired tokens and 429 for rate limiting (600 requests per token per minute). Reduce the request rate and retry later after a 429. Do not expose the token when asking for help.
+
+An earlier test without the required prefix received HTTP 403 before tool discovery; the corrected request succeeded. A 403 alone does not establish a general cause, so check the provider's current guidance if it persists. The successful Python-client test does not by itself prove that the separately configured Copilot App connection is active.
 
 ## Evidence and completion
 

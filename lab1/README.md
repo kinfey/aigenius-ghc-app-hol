@@ -14,10 +14,14 @@
 3. Choose **Plan** mode below the composer, then select **Auto** in the model picker. Auto chooses an available model for each task; the picker shows the model used for responses. The UI, models and billing depend on account and policy.
 4. Ask Copilot:
 
-   > Plan a small ordering application with a React/Vite TypeScript front end and a Node.js TypeScript API. Use a single local workspace. Use mock products and prices, a cart and simulated checkout. Support phone, tablet and desktop; include keyboard accessibility, loading, empty and error states. Suggest a test plan and exact run commands. Do not connect real services or put secrets in frontend code.
+   > Plan a small ordering application with a React/Vite TypeScript front end and a Python FastAPI backend. Use a single local workspace. Use mock products and prices, a cart and simulated checkout. Support phone, tablet and desktop; include keyboard accessibility, loading, empty and error states. Suggest a test plan and exact run commands. Do not connect real services or put secrets in frontend code.
 
 5. Review the plan before approving it. Ask for changes if it does not separate browser UI from the server. In **Interactive** mode ask it to implement the approved plan, run its tests, and report the exact commands and ports. Review file changes and approve tool calls individually; do not use blanket approval.
-6. If installing packages, use your permitted npm registry. For this workshop use `https://packagefeedproxy.microsoft.io/npm/`; ask Copilot to configure the project accordingly and install dependencies. Do not paste credentials into chat.
+6. If installing packages, use `https://packagefeedproxy.microsoft.io/npm/` for npm and `https://packagefeedproxy.microsoft.io/pypi/simple/` for PyPI. Ask Copilot to configure the project accordingly and install dependencies. Do not paste credentials into chat.
+
+The completed example is in [`lab1/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab1/code), with installation and run commands in its README. This is a real Copilot App capture during implementation; the sidebar was cropped to protect unrelated sessions.
+
+![Copilot App displaying the Lab 1 sample and implementation activity](images/copilot-build.png)
 
 ## 2. Run and inspect the app
 
@@ -25,6 +29,17 @@
 2. In Edge open DevTools (`F12` or `Cmd+Option+I`) and toggle device emulation. Check **390 × 844**, **768 × 1024**, and **1440 × 900**. Add and remove an item, inspect the cart and complete a **simulated** checkout at each width. There should be no horizontal overflow or inaccessible controls.
 3. Stop the API temporarily and refresh or perform a request: the UI should show an error and offer a retry rather than display invented data. Restart it afterwards.
 4. Ask Copilot to run the generated test suite and fix regressions. Record exact commands and results in your own notes; do not commit screenshots of personal information.
+
+The following captures were made by running the Lab 1 Python backend and React app in Microsoft Edge. They show the desktop, tablet and phone layouts:
+
+![Desktop menu at 1440 pixels](images/edge-desktop.png)
+![Tablet menu at 768 pixels](images/edge-tablet.png)
+![Phone menu at 390 pixels](images/edge-phone.png)
+
+After adding two mock items, the cart and simulated checkout looked like this:
+
+![Shopping cart after adding items](images/edge-cart.png)
+![Simulated checkout confirmation](images/edge-checkout.png)
 
 ## 3. Practice token-aware collaboration
 
@@ -34,6 +49,42 @@ Copilot App combines an agent, workspace, tools, modes and a model picker: the a
 2. Ask the agent to report the model it used and available usage information. Record task, selected model, elapsed time, test outcome and any available usage/charges. A usage display is not necessarily a final invoice.
 3. Repeat with a harder task, such as “Trace a failed API call through UI and server, propose a fix and regression test.” Observe whether Auto changes model. Availability and routing are not deterministic; do not infer model quality or pricing from its name alone.
 4. Reduce waste: make the acceptance criteria specific, request a plan before a broad edit, use focused tests first, avoid repeatedly resending large files, and start a fresh session when context becomes stale. Larger context, tool calls, retries, model choice and output length can all affect costs. Refer to [Copilot billing](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing).
+
+### Measured comparison: Auto, Decision Router, Sol and Terra
+
+The following is a real one-run demonstration from October 28, 2026, using the **same non-sensitive prompt**, working directory, `--no-custom-instructions`, and a fresh CLI session for each run. The Decision row used the private router's **startup routing** and the Azure classifier described in the next section; it is not an App model-picker integration. The prompt was:
+
+> In three concise bullets, propose a test plan for a responsive ordering app that includes menu, cart, and simulated checkout. Do not use tools.
+
+| Choice | Actual execution model | Input tokens | Output tokens | Cache-read tokens | Copilot AI credits | Credit equivalent (USD) | Model API time |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Auto | GPT-6 Luna | 14,919 | 130 | 0 | 0.173682 | $0.001737 | 4.313 s |
+| Decision Router | GPT-6 Luna | 15,169 | 128 | 9,654 | 0.084984 | $0.000850 | 5.719 s |
+| GPT-6.1 Sol | GPT-6.1 Sol | 15,170 | 104 | 0 | 3.896350 | $0.038964 | 4.475 s |
+| GPT-6.1 Terra | GPT-6.1 Terra | 15,149 | 74 | 0 | 1.930550 | $0.019306 | 3.145 s |
+
+![Actual Copilot App terminal displaying the four measured usage records](images/copilot-usage-comparison.png)
+
+**Interpretation:** This is one small test-plan request, not a benchmark. Input includes agent context; cache-read tokens are part of input, not additional tokens. The Decision run reused 9,654 cached input tokens while the other runs did not, so its lower observed Copilot usage **cannot be attributed solely to routing**. The API time is not end-to-end wall time and excludes classifier time. Both Auto and Decision selected Luna in this run; that may change. Sol and Terra may be useful for deeper analysis or more complex implementation, but validate quality on your own tasks rather than assuming a winner.
+
+Credits above are reported by CLI usage records. The USD column converts credits at the published reference rate of **1 credit = $0.01**; it is **not the actual amount charged**, which depends on your plan, allowances and billing. The Decision Router's Azure classifier tokens and Azure charges are **not included** and were not reported by the router; check Azure usage/billing separately. Its printed `$0.002000` was a **pre-execution estimate** based on 10,000 input and 2,000 output tokens, not the measured bill. One initial router attempt timed out; the successful run shown here and any retry may incur separate Azure charges.
+
+To reproduce, install and configure the optional router in section 4 first. From the same working directory run each command with the same prompt, and keep the resulting JSON files private:
+
+```bash
+TASK='In three concise bullets, propose a test plan for a responsive ordering app that includes menu, cart, and simulated checkout. Do not use tools.'
+copilot --model auto --no-custom-instructions -p "$TASK" --usage-output-file auto-usage.json
+copilot --model gpt-6.1-sol --no-custom-instructions -p "$TASK" --usage-output-file sol-usage.json
+copilot --model gpt-6.1-terra --no-custom-instructions -p "$TASK" --usage-output-file terra-usage.json
+```
+
+In the router directory, use the same `TASK` and point `-C` to that same project. Replace both paths with your own:
+
+```bash
+npm start -- -C /path/to/ordering-workshop -p "$TASK" -- --no-custom-instructions --usage-output-file /path/to/decision-usage.json
+```
+
+`TASK` must be defined in this terminal too. The router's `-C` option selects the execution workspace; do not confuse it with the router's own directory. Compare each usage JSON's actual model, input, output, cached tokens and `totalNanoAiu` (divide by one billion for credits); `lab1/code/compare_usage.py` prints the table and `usage-example/` contains sanitized figures from the run above. Review generated plans against the actual code: for example, some of these plans suggest form validation even though the sample checkout has no form. Run repeated trials with comparable cache conditions and real acceptance tests before choosing a model.
 
 ## 4. Optional: Microsoft-Decision-1 and Decision Router
 

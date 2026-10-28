@@ -1,0 +1,16 @@
+{
+  "currentModel": "gpt-6.1-terra",
+  "modelMetrics": {
+    "gpt-6.1-terra": {
+      "usage": {
+        "inputTokens": 15149,
+        "outputTokens": 74,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 15146,
+        "reasoningTokens": 0
+      }
+    }
+  },
+  "totalNanoAiu": 1930550000,
+  "totalApiDurationMs": 3145
+}

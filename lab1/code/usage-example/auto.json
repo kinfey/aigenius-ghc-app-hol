@@ -1,0 +1,16 @@
+{
+  "currentModel": "gpt-6-luna",
+  "modelMetrics": {
+    "gpt-6-luna": {
+      "usage": {
+        "inputTokens": 14919,
+        "outputTokens": 130,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 14916,
+        "reasoningTokens": 28
+      }
+    }
+  },
+  "totalNanoAiu": 173682000,
+  "totalApiDurationMs": 4313
+}

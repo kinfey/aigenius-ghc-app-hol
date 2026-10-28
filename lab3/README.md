@@ -4,6 +4,8 @@
 
 **Goal:** Use `/create-canvas` in Copilot App to create a shared, interactive order workflow using the Lab 2 MCP connection. Default to a dry run; a real order and payment require separate human decisions. Allow 60 minutes.
 
+> **Implementation status:** This is a proposed exercise, not a completed canvas example. The authoring environment did not expose the extension scaffold/reload tools required by `/create-canvas`; `lab3/code` and implementation screenshots are not yet available.
+
 ![Public GitHub canvas documentation, captured in a browser](images/canvas-doc.png)
 *Reference: [Working with canvas extensions](https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-canvas-extensions). This is an App canvas, not a Power Apps canvas.*
 

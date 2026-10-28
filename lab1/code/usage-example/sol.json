@@ -1,0 +1,16 @@
+{
+  "currentModel": "gpt-6.1-sol",
+  "modelMetrics": {
+    "gpt-6.1-sol": {
+      "usage": {
+        "inputTokens": 15170,
+        "outputTokens": 104,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 15167,
+        "reasoningTokens": 0
+      }
+    }
+  },
+  "totalNanoAiu": 3896350000,
+  "totalApiDurationMs": 4475
+}

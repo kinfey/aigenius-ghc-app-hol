@@ -18,6 +18,8 @@ In this hands-on workshop, you will use **GitHub Copilot App** to build a respon
 - Work in a **new local project**, separate from this tutorial repository. Keep one continuous application and session across the three labs.
 - Real services and models can incur charges. Never publish API keys, tokens, private endpoints, addresses, order details or screenshots containing them. Use your own credentials and rotate any that have been exposed.
 
-Each lab has an English `README.md` and a Simplified Chinese `README.zh.md`. Screenshots in the guides are real browser captures of public documentation, not fabricated screenshots of a completed application. Follow each lab's capture checklist to create your own Copilot App and Edge evidence; redact personal data first.
+Each lab has an English `README.md` and a Simplified Chinese `README.zh.md`. The guides distinguish public-documentation screenshots from actual App and Edge captures of the workshop implementation. Real-service screenshots must never expose credentials or account information.
+
+**Current status:** Labs 1–2 include sample code and implementation captures. Lab 3 is a proposed exercise; its canvas code and implementation screenshots are not yet available.
 
 Start with [Lab 1](lab1/).
