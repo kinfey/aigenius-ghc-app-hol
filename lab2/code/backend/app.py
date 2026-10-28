@@ -10,6 +10,7 @@ from fastapi import FastAPI, HTTPException, Request
 from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 from mcp.shared.exceptions import McpError
+from backend.ordering import create_order_router
 
 logger = logging.getLogger("ordering-workshop")
 app = FastAPI(title="Ordering Workshop API")
@@ -48,6 +49,10 @@ async def products() -> dict[str, Any]:
 
 def mcp_headers(token: str) -> dict[str, str]:
     return {"Authorization": f"Bearer {token}"}
+
+
+ordering_router = create_order_router(mcp_headers)
+app.include_router(ordering_router)
 
 
 def check_provider_result(value: Any) -> None:

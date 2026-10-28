@@ -1,0 +1,79 @@
+.live-shell { min-height: 100vh; background: #f7f8f2; color: #233e2e; }
+.live-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 6%; background: white; border-bottom: 1px solid #e0e7dc; }
+.live-brand { color: #285e3b; font-size: 24px; text-decoration: none; font-weight: 800; }
+.live-brand small { font-size: 10px; display: block; letter-spacing: 1px; margin-top: 5px; }
+.live-badge { border: 1px solid #c8dcca; border-radius: 30px; padding: 9px 14px; font-size: 12px; background: #edf6e9; white-space: nowrap; }
+.live-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 45px; max-width: 1280px; margin: auto; padding: 42px 5%; align-items: start; }
+.live-sidebar { position: sticky; top: 24px; min-width: 0; }
+.live-sidebar h1 { font-size: 34px; line-height: 1.45; margin: 20px 0; }
+.live-sidebar > p { line-height: 1.9; font-size: 13px; color: #627568; }
+.live-progress { list-style: none; padding: 0; margin: 30px 0; }
+.live-progress li { display: flex; align-items: center; gap: 12px; margin: 17px 0; font-size: 13px; color: #7c8b7f; }
+.live-progress li span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #e5e9e0; flex-shrink: 0; }
+.live-progress li.current { color: #235a37; font-weight: 700; }
+.live-progress .current span { color: white; background: #285e3b; }
+.live-progress .complete span { color: #285e3b; background: #dcebd8; }
+.live-privacy { font-size: 11px; color: #6d7f70; padding: 17px; line-height: 1.9; background: #eaf0e4; border-radius: 10px; }
+.live-stage { min-width: 0; scroll-margin-top: 20px; }
+.live-card { border: 1px solid #e0e7dc; border-radius: 20px; background: white; padding: 32px; }
+.live-card h2 { font-size: 26px; line-height: 1.5; margin: 12px 0 20px; }
+.live-card h3 { font-size: 16px; }
+.live-card p { line-height: 1.9; font-size: 13px; }
+.live-card button { padding: 12px 16px; background: #eff5e9; color: #285e3b; border: 1px solid #ccdac7; border-radius: 9px; line-height: 1.5; }
+.live-card button:disabled { opacity: .5; cursor: not-allowed; }
+.live-card .live-primary { background: #285e3b; color: white; margin-top: 20px; }
+.live-card .live-danger { background: #a4352b; color: white; }
+.live-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+.live-methods button { text-align: left; font-weight: 700; font-size: 17px; padding: 22px; background: white; }
+.live-methods small { display: block; font-size: 11px; font-weight: 400; margin-top: 10px; }
+.live-card button.chosen { background: #e7f2df; border: 2px solid #367044; }
+.live-field, .live-fields label { display: grid; gap: 10px; font-size: 13px; margin: 20px 0; }
+.live-field input, .live-field select, .live-fields input { font: inherit; border: 1px solid #c8d6c3; border-radius: 8px; padding: 12px; width: 100%; min-width: 0; background: #fafcf7; color: #233e2e; }
+.live-shell input:focus-visible, .live-shell select:focus-visible { outline: 3px solid #e8a933; outline-offset: 3px; }
+.live-check, .live-option { display: flex; align-items: start; gap: 12px; line-height: 1.9; font-size: 13px; }
+.live-shell input[type=checkbox], .live-shell input[type=radio] { accent-color: #285e3b; min-width: 18px; width: 18px; height: 18px; flex-shrink: 0; margin-top: 4px; }
+.live-option { padding: 18px 0; border-bottom: 1px solid #e4e9df; }
+.live-option p { margin: 5px 0; }
+.live-option small { overflow-wrap: anywhere; }
+.live-addresses { border: 0; padding: 0; margin-top: 24px; }
+.live-addresses legend { font-weight: 600; }
+.live-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; align-items: end; }
+.live-card .live-back { display: block; background: transparent; border: 0; text-decoration: underline; margin-top: 20px; padding-left: 0; }
+.live-store-grid { display: grid; gap: 16px; }
+.live-store { padding: 20px; border: 1px solid #dfe7d9; border-radius: 12px; }
+.live-menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0; max-height: 450px; overflow-y: auto; padding: 4px; }
+.live-menu button { text-align: left; background: white; }
+.live-menu button small, .live-menu button span { display: block; margin-top: 8px; font-size: 11px; }
+.live-detail, .live-review, .live-confirm { margin: 24px 0; background: #f7faf3; padding: 22px; border: 1px solid #dce6d4; border-radius: 12px; }
+.live-data { margin: 8px 0; font-size: 12px; line-height: 1.8; }
+.live-data > div { display: grid; grid-template-columns: minmax(80px, .7fr) minmax(0, 1.4fr); gap: 12px; border-bottom: 1px solid #e5eadd; padding: 8px 0; }
+.live-data dt { color: #667f6a; overflow-wrap: anywhere; }
+.live-data dd { margin: 0; overflow-wrap: anywhere; min-width: 0; }
+.live-data-list > .live-data { padding: 8px; border-left: 2px solid #b5c9ab; margin-bottom: 10px; }
+.live-cart { border-top: 1px dashed #cbd9c2; margin-top: 24px; padding-top: 12px; }
+.live-cart > div { display: flex; justify-content: space-between; gap: 15px; font-size: 13px; padding: 9px 0; align-items: center; }
+.live-success { color: #28613d; }
+.live-loading { background: #e5f1dc; padding: 16px; border-radius: 10px; font-size: 13px; }
+.live-next { margin-top: 24px; }
+.live-card details { margin: 20px 0; overflow-wrap: anywhere; }
+.live-card summary { cursor: pointer; font-size: 13px; line-height: 1.8; color: #356943; }
+.live-shell footer { max-width: 1280px; margin: auto; line-height: 1.8; }
+@media (max-width: 800px) {
+  .live-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 24px 4%; }
+  .live-sidebar { position: static; }
+  .live-sidebar h1 { font-size: 26px; }
+  .live-sidebar h1 br { display: none; }
+  .live-progress { display: flex; overflow: auto; gap: 16px; margin: 20px 0 0; }
+  .live-progress li { flex-shrink: 0; margin: 8px 0; font-size: 11px; }
+  .live-privacy { margin-top: 16px; }
+  .live-card { padding: 22px; }
+}
+@media (max-width: 450px) {
+  .live-header { padding: 18px 4%; gap: 10px; }
+  .live-brand { font-size: 21px; }
+  .live-badge { font-size: 10px; padding: 7px; }
+  .live-methods, .live-menu { grid-template-columns: 1fr; }
+  .live-card h2 { font-size: 23px; }
+  .live-data > div { grid-template-columns: 1fr; gap: 2px; }
+  .live-detail, .live-review, .live-confirm { padding: 15px; }
+}

@@ -2,7 +2,11 @@
 
 [简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab2/zh.html) · [Lab 1](../lab1/) · [Next: Lab 3](../lab3/)
 
-**Goal:** Connect Copilot App to the McDonald's China MCP server, query coupon information, and add an optional read-only offers view to the Lab 1 application. Allow 60 minutes.
+**Goal:** Connect Copilot App to the McDonald's China MCP server, query coupon information, and inspect the prepared read-only offers adapter. Allow **15 minutes** of the **60-minute workshop** (20 + 15 + 25).
+
+**Timed route:** 0–3 min explain the two-client boundary; 3–8 min verify the preconfigured MCP connection and discover read-only tools; 8–12 min query a real offer and inspect its source/conditions; 12–15 min inspect the prepared adapter and one failure case. Account activation, terms acceptance, private token preparation and dependency installation are **pre-class** work. Section 4's full implementation prompt is reference/after-class practice; the timed class uses [`lab2/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab2/code).
+
+The shared sample now defaults to Lab 3's real guided wizard. To inspect the earlier Lab 2 menu/offers UI, explicitly open `http://127.0.0.1:5173/?demo=1`; its offers endpoint uses `OFFERS_MODE` (`mock` by default, `live` only when privately enabled). This does not change the default wizard's real-only behavior.
 
 ![Public McDonald's MCP documentation, captured in a browser](images/mcd-doc.png)
 *Reference: [McDonald's MCP documentation](https://open.mcd.cn/mcp/doc) and its [server guide](https://github.com/M-China/mcd-mcp-server).*

@@ -2,7 +2,9 @@
 
 [English](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/) · [工作坊首页](../zh.html) · [下一步：实验二](../lab2/zh.html)
 
-**目标：**构建可在电脑、平板和手机运行的本地全栈点餐原型，并比较 Auto 与可选的独立启动的 Decision Router。建议 90 分钟。
+**目标：**构建并检查适配电脑、平板和手机的本地全栈点餐原型，练习一次聚焦的 Auto 任务。用时 **20 分钟**，属于 **60 分钟课程**的一部分（20 + 15 + 25）。
+
+**限时路线：**0–3 分钟检查课前已安装的起始项目；3–12 分钟使用 Auto 规划并实现一项范围明确的 UI/API 改进；12–17 分钟检查响应式布局与结账；17–20 分钟执行聚焦测试并记录用量。安装和恢复依赖在课前完成。生成耗时过长时，以 [`lab1/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab1/code) 为预备基线。下方从零实现步骤保留为参考；多轮基准测试和第 4 节 Decision Router/Azure 部署均为**课后扩展**，不计入这 20 分钟。
 
 ![在浏览器中截取的 Copilot App 会话官方文档](images/copilot-sessions-doc.png)
 *参考：[GitHub 会话文档](https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions)。实际界面可能随版本变化。*
@@ -10,7 +12,7 @@
 ## 1. 准备工作区
 
 1. 安装 Git、Node.js 22.16 以上、Edge 和 [GitHub Copilot App](https://github.com/features/copilot/copilot-app)。登录并确认账号有 Copilot 权限。
-2. 创建空的本地文件夹 `ordering-workshop`，并在其中运行 `git init`。实验三的项目级画布需要 Git 仓库；不要在本教程仓库内创建该项目。在 Copilot App 中选择 **Sessions → New → Open local folder**，选中该文件夹；检查内容后再授予信任。
+2. 课前创建本地文件夹 `ordering-workshop` 并运行 `git init`；采用限时路线时提前准备好起始代码。Git 用于版本管理和可选的课后 SDK 扩展，实验三现有 Browser 画布不要求开发这类扩展。不要在本教程仓库内嵌套学习项目。在 Copilot App 中选择 **Sessions → New → Open local folder**，选中该文件夹；检查内容后再授予信任。
 3. 在输入框下选择 **Plan** 模式，然后在模型选择器中选择 **Auto**。Auto 根据任务选择可用模型；选择器会显示响应所用的模型。界面、模型和计费取决于账号及策略。
 4. 向 Copilot 提交：
 
@@ -86,7 +88,7 @@ npm start -- -C /path/to/ordering-workshop -p "$TASK" -- --no-custom-instruction
 
 此终端中也需先定义 `TASK`。路由器的 `-C` 指向执行工作区，不是路由器本身目录。比较各用量 JSON 的实际模型、输入、输出、缓存和 `totalNanoAiu`（除以十亿得到 credits）；`lab1/code/compare_usage.py` 可输出表格，`usage-example/` 包含本次运行脱敏后的数据。生成的测试建议必须对照实际代码审核：例如部分回答建议检查表单校验，但示例结账并没有表单。选型前应在可比的缓存条件下多次运行，并执行真实验收测试。
 
-## 4. 可选：Microsoft-Decision-1 与 Decision Router
+## 4. 课后可选：Microsoft-Decision-1 与 Decision Router
 
 **重要：**私有路由器仓库目前记录的是实验性的 **Copilot CLI** 原生扩展，并没有验证 Copilot App 的模型选择器支持该路由器。以下步骤在独立终端中针对同一项目运行；其余实验继续使用 App。不要声称 CLI 路由会自动配置或路由 App 会话。若无法访问路由器，可直接继续使用 Auto。
 
