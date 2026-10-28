@@ -1,6 +1,6 @@
 # 实验一：构建点餐应用并选择模型
 
-[English](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/) · [工作坊首页](../zh.html) · [下一步：实验二](../lab2/zh.html)
+[English](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/) · [繁體中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/traditional.html) · [工作坊首页](../zh.html) · [下一步：实验二](../lab2/zh.html)
 
 **目标：**构建并检查适配电脑、平板和手机的本地全栈点餐原型，并用同一个小任务比较 **Auto 与只使用 GPT-6 Luna（`gpt-6-luna`）**。用时 **20 分钟**，属于 **60 分钟课程**的一部分（20 + 15 + 25）。
 

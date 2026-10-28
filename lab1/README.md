@@ -1,6 +1,6 @@
 # Lab 1 — Build the ordering app and choose a model
 
-[简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/zh.html) · [Workshop home](../) · [Next: Lab 2](../lab2/)
+[简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/zh.html) · [繁體中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/traditional.html) · [Workshop home](../) · [Next: Lab 2](../lab2/)
 
 **Goal:** Build and inspect a local full-stack ordering prototype across desktop, tablet and phone, and compare **Auto versus using only GPT-6 Luna (`gpt-6-luna`)** on the same small task. Allow **20 minutes** of the **60-minute workshop** (20 + 15 + 25).
 

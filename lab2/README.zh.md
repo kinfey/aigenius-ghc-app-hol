@@ -1,6 +1,6 @@
 # 实验二：使用 MCP 查找麦当劳优惠
 
-[English](https://kinfey.github.io/aigenius-ghc-app-hol/lab2/) · [实验一](../lab1/zh.html) · [下一步：实验三](../lab3/zh.html)
+[English](https://kinfey.github.io/aigenius-ghc-app-hol/lab2/) · [繁體中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab2/traditional.html) · [实验一](../lab1/zh.html) · [下一步：实验三](../lab3/zh.html)
 
 **目标：**将 Copilot App 连接麦当劳中国 MCP 服务，查询优惠信息并检查预置只读优惠适配器。用时 **15 分钟**，属于 **60 分钟课程**的一部分（20 + 15 + 25）。
 

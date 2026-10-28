@@ -1,6 +1,6 @@
 # Build a responsive ordering experience with GitHub Copilot App
 
-[简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/zh.html) · [GitHub repository](https://github.com/kinfey/aigenius-ghc-app-hol)
+[简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/zh.html) · [繁體中文](https://kinfey.github.io/aigenius-ghc-app-hol/traditional.html) · [GitHub repository](https://github.com/kinfey/aigenius-ghc-app-hol)
 
 In this **60-minute** hands-on workshop, you will use **GitHub Copilot App** to build a responsive ordering application, connect to the McDonald's China MCP service, and run a human-in-the-loop guided application in the Browser canvas. This is an independent educational exercise, not an official McDonald's product.
 
@@ -21,10 +21,10 @@ Install tools, restore sample dependencies, sign in, and prepare your own privat
 - Work in a **new local project**, separate from this tutorial repository. Keep one continuous application and main session across the three labs; use separate fresh, read-only sessions for Lab 1's model comparison.
 - Real services and models can incur charges. Never publish API keys, tokens, private endpoints, addresses, order details or screenshots containing them. Use your own credentials and rotate any that have been exposed.
 
-Each lab has an English `README.md` and a Simplified Chinese `README.zh.md`. The guides distinguish public-documentation screenshots from actual App and Edge captures of the workshop implementation. Real-service screenshots must never expose credentials or account information.
+Each lab has an English `README.md`, a Simplified Chinese `README.zh.md` and a Traditional Chinese `README.tranditional.md`. The guides distinguish public-documentation screenshots from actual App and Edge captures of the workshop implementation. Real-service screenshots must never expose credentials or account information.
 
-**Current status:** All three labs include runnable code and implementation captures. Lab 3 reuses [`lab2/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab2/code) rather than duplicating the application, with complete [English](lab3/) and [Chinese](lab3/zh.html) instructions, generated-file links and screenshots. Its Browser canvas application is implemented; a registered custom SDK canvas extension is a separate optional deliverable. Live connection/menu screenshots are distinguished from the explicitly labeled offline confirmation fixture; no real order or payment was made for the workshop evidence.
+**Current status:** All three labs include runnable code and implementation captures. Lab 3 reuses [`lab2/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab2/code) rather than duplicating the application, with complete [English](lab3/), [Simplified Chinese](lab3/zh.html) and [Traditional Chinese](lab3/traditional.html) instructions, generated-file links and screenshots. Its Browser canvas application is implemented; a registered custom SDK canvas extension is a separate optional deliverable. Live connection/menu screenshots are distinguished from the explicitly labeled offline confirmation fixture; no real order or payment was made for the workshop evidence.
 
-GitHub Pages hosts the bilingual guides and screenshots, not the credential-bearing Python application. Run that application locally using its README.
+GitHub Pages hosts the trilingual guides and screenshots, not the credential-bearing Python application. Run that application locally using its README.
 
 Start with [Lab 1](lab1/).

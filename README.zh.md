@@ -1,6 +1,6 @@
 # 使用 GitHub Copilot App 构建响应式点餐体验
 
-[English](https://kinfey.github.io/aigenius-ghc-app-hol/) · [GitHub 仓库](https://github.com/kinfey/aigenius-ghc-app-hol)
+[English](https://kinfey.github.io/aigenius-ghc-app-hol/) · [繁體中文](https://kinfey.github.io/aigenius-ghc-app-hol/traditional.html) · [GitHub 仓库](https://github.com/kinfey/aigenius-ghc-app-hol)
 
 本工作坊共 **60 分钟**，使用 **GitHub Copilot App** 构建响应式点餐应用，连接麦当劳中国 MCP 服务，并在 Browser 画布中运行需要用户参与确认的引导式应用。这是独立的教学练习，不是麦当劳官方产品。
 
@@ -21,10 +21,10 @@
 - 在**新的本地项目**中操作，不要把应用代码写入教程仓库。三个实验沿用同一个应用和主会话；实验一的模型对比使用独立、全新、只读的会话。
 - 真实服务和模型可能产生费用。不要公开 API 密钥、Token、私人端点、地址、订单详情或含有这些信息的截图。使用自己的凭据，已泄露的凭据应立即轮换。
 
-每个实验都提供英文 `README.md` 和简体中文 `README.zh.md`。指南中明确区分公开文档截图与工作坊实际实现过程的 App、Edge 截图。真实服务截图绝不能暴露凭据或账户信息。
+每个实验都提供英文 `README.md`、简体中文 `README.zh.md` 和繁体中文 `README.tranditional.md`。指南中明确区分公开文档截图与工作坊实际实现过程的 App、Edge 截图。真实服务截图绝不能暴露凭据或账户信息。
 
-**当前状态：**三个实验均包含可运行代码与实现截图。实验三直接复用 [`lab2/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab2/code)，不复制应用；完整[英文](lab3/)和[中文](lab3/zh.html)指南包含生成文件链接及关键截图。Browser 画布应用已实现，注册 SDK 自定义扩展是独立的课后目标。真实连接/菜单截图与明确标注的离线确认截图分开说明，课程取证未真实下单或付款。
+**当前状态：**三个实验均包含可运行代码与实现截图。实验三直接复用 [`lab2/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab2/code)，不复制应用；完整[英文](lab3/)、[简体中文](lab3/zh.html)和[繁體中文](lab3/traditional.html)指南包含生成文件链接及关键截图。Browser 画布应用已实现，注册 SDK 自定义扩展是独立的课后目标。真实连接/菜单截图与明确标注的离线确认截图分开说明，课程取证未真实下单或付款。
 
-GitHub Pages 仅发布双语教程和截图，不承载带凭据的 Python 应用；应用按其 README 在本机运行。
+GitHub Pages 仅发布三语教程和截图，不承载带凭据的 Python 应用；应用按其 README 在本机运行。
 
 从[实验一](lab1/zh.html)开始。

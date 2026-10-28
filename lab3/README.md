@@ -1,6 +1,6 @@
 # Lab 3 — Guided MCP ordering in a canvas
 
-[简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab3/zh.html) · [Lab 2](../lab2/) · [Workshop home](../)
+[简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab3/zh.html) · [繁體中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab3/traditional.html) · [Lab 2](../lab2/) · [Workshop home](../)
 
 **Goal:** Extend the Lab 2 application into a step-by-step, real MCP ordering workflow and open it in Copilot App's existing **Browser canvas**. Allow **25 minutes**, within the **60-minute workshop**: Lab 1 20 min + Lab 2 15 min + Lab 3 25 min.
 

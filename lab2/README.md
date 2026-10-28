@@ -1,6 +1,6 @@
 # Lab 2 — Find McDonald's offers with MCP
 
-[简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab2/zh.html) · [Lab 1](../lab1/) · [Next: Lab 3](../lab3/)
+[简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab2/zh.html) · [繁體中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab2/traditional.html) · [Lab 1](../lab1/) · [Next: Lab 3](../lab3/)
 
 **Goal:** Connect Copilot App to the McDonald's China MCP server, query coupon information, and inspect the prepared read-only offers adapter. Allow **15 minutes** of the **60-minute workshop** (20 + 15 + 25).
 

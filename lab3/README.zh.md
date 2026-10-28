@@ -1,6 +1,6 @@
 # 实验三：在画布中完成 MCP 引导式点餐
 
-[English](https://kinfey.github.io/aigenius-ghc-app-hol/lab3/) · [实验二](../lab2/zh.html) · [工作坊首页](../zh.html)
+[English](https://kinfey.github.io/aigenius-ghc-app-hol/lab3/) · [繁體中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab3/traditional.html) · [实验二](../lab2/zh.html) · [工作坊首页](../zh.html)
 
 **目标：**基于实验二应用实现逐步引导的真实 MCP 点餐流程，并在 Copilot App 现有的 **Browser 画布**中打开。用时 **25 分钟**；整个课程共 **60 分钟**：实验一 20 分钟 + 实验二 15 分钟 + 实验三 25 分钟。
 
