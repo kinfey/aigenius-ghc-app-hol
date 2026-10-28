@@ -2,9 +2,9 @@
 
 [English](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/) · [工作坊首页](../zh.html) · [下一步：实验二](../lab2/zh.html)
 
-**目标：**构建并检查适配电脑、平板和手机的本地全栈点餐原型，练习一次聚焦的 Auto 任务。用时 **20 分钟**，属于 **60 分钟课程**的一部分（20 + 15 + 25）。
+**目标：**构建并检查适配电脑、平板和手机的本地全栈点餐原型，并用同一个小任务比较 **Auto 与只使用 GPT-6 Luna（`gpt-6-luna`）**。用时 **20 分钟**，属于 **60 分钟课程**的一部分（20 + 15 + 25）。
 
-**限时路线：**0–3 分钟检查课前已安装的起始项目；3–12 分钟使用 Auto 规划并实现一项范围明确的 UI/API 改进；12–17 分钟检查响应式布局与结账；17–20 分钟执行聚焦测试并记录用量。安装和恢复依赖在课前完成。生成耗时过长时，以 [`lab1/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab1/code) 为预备基线。下方从零实现步骤保留为参考；多轮基准测试和第 4 节 Decision Router/Azure 部署均为**课后扩展**，不计入这 20 分钟。
+**限时路线：**0–3 分钟检查课前已安装的起始项目；3–12 分钟使用 Auto 规划并实现一项范围明确的 UI/API 改进；12–17 分钟检查响应式布局、结账并执行聚焦测试；17–20 分钟用相同的简短规划提示词分别运行 Auto 与固定 GPT-6 Luna，比较实际记录。安装和恢复依赖在课前完成。生成耗时过长时，以 [`lab1/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab1/code) 为预备基线。下方从零实现步骤保留为参考；多轮基准测试和第 4 节 Decision Router/Azure 部署均为**课后扩展**，不计入这 20 分钟。
 
 ![在浏览器中截取的 Copilot App 会话官方文档](images/copilot-sessions-doc.png)
 *参考：[GitHub 会话文档](https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions)。实际界面可能随版本变化。*
@@ -43,16 +43,48 @@
 ![添加商品后的购物车](images/edge-cart.png)
 ![模拟结账确认](images/edge-checkout.png)
 
-## 3. 练习节约 Token 的协作
+## 3. 比较 Auto 与只使用 GPT-6 Luna
 
 Copilot App 将 Agent、工作区、工具、模式和模型选择器组合在一起：Agent 可检查文件、修改代码、运行测试并在画布展示结果，用户仍负责审核操作。**Auto** 与下方路由器不是同一功能。
 
-1. 在相同项目中创建新会话，选择 **Auto**。提出范围明确的任务，例如“增加空购物车测试，只修改相关组件和测试”。用 `@` 引用文件，不要反复粘贴整个仓库。
-2. 请 Agent 报告使用的模型及界面提供的用量信息。记录任务、模型、耗时、测试结果和可获得的用量/费用信息；界面显示不一定等于最终账单。
-3. 再尝试较复杂的任务，例如“追踪 API 失败经过 UI 和服务器的路径，提出修复和回归测试”。观察 Auto 是否更换模型。模型可用性和路由并非固定，不要仅凭名字推断质量或价格。
+1. 在相同项目中创建全新 App 会话并选择 **Auto**，提交下方不含敏感信息的简短规划提示词，不使用工具、不修改代码。
+2. 针对未改变的同一基线新建另一个会话，在 App 模型选择器中明确选择 **GPT-6 Luna**，不要选择 Auto 或 Decision Router。提交完全相同的提示词后，核实实际执行模型为 `gpt-6-luna`。第二组不要继承第一组答案。如果账号未提供该模型，记录“不可用”，不要悄悄替换。
+3. 记录两组回答、实际模型、可获得的输入/输出/缓存用量、API 时间及积分，并对照应用与测试检查建议。App 与独立 CLI 是不同执行入口；下面的 CLI 命令复现的是 CLI 实测，不是操作 App 模型选择器。更复杂任务、多轮测量和路由器对比放在课后。
 4. 节省用量：明确验收条件，大改动先规划，先跑针对性测试，避免重复发送大文件，上下文陈旧时创建新会话。上下文大小、工具调用、重试、模型与输出长度均可能影响成本。参阅 [Copilot 计费说明](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing)。
 
-### 实测对比：Auto、Decision Router、Sol 与 Terra
+### 新增实测：Auto 与固定 GPT-6 Luna
+
+2026 年 10 月 28 日，在相同干净工作目录启动两个全新的独立 CLI 会话，禁用自定义指令和内置 MCP，使用完全相同的下列提示词。两组均未调用工具或改代码。固定组直接使用 `--model gpt-6-luna`，不经过 Decision Router 或 Azure 分类器：
+
+> In three concise bullets, propose a test plan for a responsive ordering app that includes menu, cart, and simulated checkout. Do not use tools.
+
+| 选择 | 实际执行模型 | 输入 Token | 输出 Token | 缓存读取 Token | Copilot AI Credits | 模型 API 时间 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Auto | GPT-6 Luna | 14,559 | 119 | 0 | 0.1691370 | 3.973 秒 |
+| 只使用固定 GPT-6 Luna | GPT-6 Luna | 14,593 | 137 | 9,321 | 0.0820635 | 4.648 秒 |
+
+![真实 Auto 与固定 Luna CLI 用量记录的脱敏汇总](images/auto-luna-comparison.png)
+*由真实、已脱敏的 CLI 用量 JSON 渲染的汇总图，不是 App 模型选择器截图。不包含会话 ID、含私人数据的提示词或凭据。*
+
+**如何理解：**本任务中 Auto 实际选中了 Luna，固定组则明确锁定 Luna。两组都覆盖了响应式、餐篮和结账检查；固定组明确提到不触发真实支付。不过，两组都建议校验结账输入，而示例结账只是没有输入表单的确认对话框，因此都需要人工修正。不能据此判定质量胜负，也不能当作编码基准。
+
+固定组读取了 9,321 个缓存 Token，Auto 没有缓存读取。因此，较低的记录积分**不能证明固定 Luna 天生比 Auto 便宜**。API 时间不是端到端耗时，积分也不是最终账单。这两组属于新的独立样本，不要与下方旧四组数据混成受控排名。
+
+无需安装可选路由器即可复现：
+
+```bash
+TASK='In three concise bullets, propose a test plan for a responsive ordering app that includes menu, cart, and simulated checkout. Do not use tools.'
+copilot --model auto --no-custom-instructions --no-auto-update --disable-builtin-mcps --disable-mcp-server mcd-mcp --no-ask-user -p "$TASK" --usage-output-file auto-usage.json
+copilot --model gpt-6-luna --no-custom-instructions --no-auto-update --disable-builtin-mcps --disable-mcp-server mcd-mcp --no-ask-user -p "$TASK" --usage-output-file luna-usage.json
+```
+
+原始记录仅私下保留。在 `lab1/code` 中查看已提供的脱敏数据：
+
+```bash
+python3 compare_usage.py Auto=usage-example/auto-vs-luna-auto.json FixedLuna=usage-example/auto-vs-luna-fixed.json
+```
+
+### 课后历史参考：Auto、Decision Router、Sol 与 Terra
 
 以下是 2026 年 10 月 28 日的一次真实演示：四组使用**同一条不含敏感信息的提示词**、相同工作目录和 `--no-custom-instructions`，每次创建新的 CLI 会话。Decision 组使用下一节私有路由器的**启动时路由**与 Azure 分类器，并不是 App 模型选择器的集成。提示词为：
 
@@ -129,6 +161,6 @@ npm start -- -C /path/to/ordering-workshop -p "$TASK" -- --no-custom-instruction
 
 ## 截图与完成标准
 
-自行截取并脱敏：(1) Copilot App 中的计划与 Auto 选择器；(2) Edge 中三个视口尺寸；(3) 可选的 Foundry 部署详情（隐藏端点和密钥）及 CLI 路由器选择。上方参考图片不能替代这些截图。
+自行截取并脱敏：(1) Copilot App 中的计划、Auto/固定 Luna 的选择与回答；(2) Edge 中三个视口尺寸；(3) 可选的 Foundry 部署详情（隐藏端点和密钥）及 CLI 路由器选择。上方参考图片不能替代这些截图。
 
-当三个尺寸均可使用、API 离线时 UI 能提示错误、测试通过且结账为模拟模式时，即可保留项目并进入[实验二](../lab2/zh.html)。
+当三个尺寸均可使用、API 离线时 UI 能提示错误、测试通过、结账为模拟模式，并记录同提示词的 Auto/固定 Luna 对比（或注明模型不可用）后，即可保留项目并进入[实验二](../lab2/zh.html)。

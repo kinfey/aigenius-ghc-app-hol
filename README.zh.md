@@ -6,7 +6,7 @@
 
 | 实验 | 成果 | 建议时间 |
 | --- | --- | --- |
-| [实验一：构建与路由](lab1/zh.html) | 响应式前端、本地 API 和一次聚焦的 Auto 任务 | 20 分钟 |
+| [实验一：构建与对比](lab1/zh.html) | 响应式应用，同任务比较 Auto 与固定 GPT-6 Luna | 20 分钟 |
 | [实验二：连接 MCP](lab2/zh.html) | 连接 MCP 并查询真实只读优惠信息 | 15 分钟 |
 | [实验三：画布中的引导式点餐](lab3/zh.html) | 真实 MCP 向导、菜单处理与明确确认关卡 | 25 分钟 |
 | **合计** | **三个实验沿用同一应用** | **60 分钟** |
@@ -17,8 +17,8 @@
 
 - 安装 [GitHub Copilot App](https://github.com/features/copilot/copilot-app)、Git、Node.js 22.16 或更高版本和 Microsoft Edge，使用有 Copilot 权限的账号登录。菜单及模型可用性可能随版本和策略变化。
 - 实验二、三需要中国大陆地区的麦当劳账户，并能访问 [open.mcd.cn](https://open.mcd.cn/)。服务条款、账户资格、服务可用性和工具参数可能变化。
-- 实验一的可选 Decision Router 需要有权访问私有[路由仓库](https://github.com/kinfey/decision-ghc-router)、Copilot CLI，以及已在 Microsoft Foundry 部署 Microsoft-Decision-1 的 Azure 订阅。使用 Auto 不需要这些额外条件。
-- 在**新的本地项目**中操作，不要把应用代码写入教程仓库。三个实验沿用同一个应用和会话。
+- 实验一的可选 Decision Router 需要有权访问私有[路由仓库](https://github.com/kinfey/decision-ghc-router)、Copilot CLI，以及已在 Microsoft Foundry 部署 Microsoft-Decision-1 的 Azure 订阅。使用 Auto 或固定 GPT-6 Luna 均不需要这些额外条件。
+- 在**新的本地项目**中操作，不要把应用代码写入教程仓库。三个实验沿用同一个应用和主会话；实验一的模型对比使用独立、全新、只读的会话。
 - 真实服务和模型可能产生费用。不要公开 API 密钥、Token、私人端点、地址、订单详情或含有这些信息的截图。使用自己的凭据，已泄露的凭据应立即轮换。
 
 每个实验都提供英文 `README.md` 和简体中文 `README.zh.md`。指南中明确区分公开文档截图与工作坊实际实现过程的 App、Edge 截图。真实服务截图绝不能暴露凭据或账户信息。
