@@ -2,9 +2,9 @@
 
 [简体中文](https://kinfey.github.io/aigenius-ghc-app-hol/lab1/zh.html) · [Workshop home](../) · [Next: Lab 2](../lab2/)
 
-**Goal:** Build and inspect a local full-stack ordering prototype across desktop, tablet and phone, and practice a focused Auto task. Allow **20 minutes** of the **60-minute workshop** (20 + 15 + 25).
+**Goal:** Build and inspect a local full-stack ordering prototype across desktop, tablet and phone, and compare **Auto versus using only GPT-6 Luna (`gpt-6-luna`)** on the same small task. Allow **20 minutes** of the **60-minute workshop** (20 + 15 + 25).
 
-**Timed route:** 0–3 min inspect the preinstalled starter; 3–12 min plan and implement one bounded UI/API improvement with Auto; 12–17 min inspect responsive layouts and checkout; 17–20 min run a focused test and record usage. Installation and dependency restoration are pre-class work. Use [`lab1/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab1/code) as the prepared baseline if generation takes longer. The detailed from-scratch instructions remain reference material; repeated benchmarks and section 4's Decision Router/Azure setup are **after-class extensions**, not part of these 20 minutes.
+**Timed route:** 0–3 min inspect the preinstalled starter; 3–12 min plan and implement one bounded UI/API improvement with Auto; 12–17 min inspect responsive layouts, checkout and a focused test; 17–20 min run the same concise planning prompt with Auto and fixed GPT-6 Luna and compare the recorded results. Installation and dependency restoration are pre-class work. Use [`lab1/code`](https://github.com/kinfey/aigenius-ghc-app-hol/tree/main/lab1/code) as the prepared baseline if generation takes longer. The detailed from-scratch instructions remain reference material; repeated benchmarks and section 4's Decision Router/Azure setup are **after-class extensions**, not part of these 20 minutes.
 
 ![Public GitHub documentation about Copilot App sessions, captured in a browser](images/copilot-sessions-doc.png)
 *Reference: [GitHub's session documentation](https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions). Actual controls may differ by app version.*
@@ -43,16 +43,48 @@ After adding two mock items, the cart and simulated checkout looked like this:
 ![Shopping cart after adding items](images/edge-cart.png)
 ![Simulated checkout confirmation](images/edge-checkout.png)
 
-## 3. Practice token-aware collaboration
+## 3. Compare Auto with using only GPT-6 Luna
 
 Copilot App combines an agent, workspace, tools, modes and a model picker: the agent can inspect files, edit code, run tests and show results in a canvas; you remain responsible for reviewing its actions. **Auto** is not the same as the router below.
 
-1. Start a fresh session in the same project and select **Auto**. Give a narrow request, such as “Add an empty-cart test; change only the relevant component and test.” Refer to files with `@` where helpful instead of pasting the whole repository.
-2. Ask the agent to report the model it used and available usage information. Record task, selected model, elapsed time, test outcome and any available usage/charges. A usage display is not necessarily a final invoice.
-3. Repeat with a harder task, such as “Trace a failed API call through UI and server, propose a fix and regression test.” Observe whether Auto changes model. Availability and routing are not deterministic; do not infer model quality or pricing from its name alone.
+1. In a fresh App session in the same project select **Auto**. Submit the short, non-sensitive planning prompt below without tools or code changes.
+2. Create another fresh session against the unchanged baseline and select **GPT-6 Luna** in the App model picker, not Auto or Decision Router. Submit the identical prompt, then verify the execution model is `gpt-6-luna`. Do not compare a second session that inherits the first answer. If this model is not offered for your account, record “unavailable”; do not silently substitute another model.
+3. Record each response, actual execution model, available input/output/cache usage, API time and credits. Check the suggestions against the actual sample and its tests. The App and standalone CLI are separate execution surfaces; the CLI commands below reproduce the CLI measurements, not an App picker action. More difficult tasks, repeated trials and the router comparison are after-class work.
 4. Reduce waste: make the acceptance criteria specific, request a plan before a broad edit, use focused tests first, avoid repeatedly resending large files, and start a fresh session when context becomes stale. Larger context, tool calls, retries, model choice and output length can all affect costs. Refer to [Copilot billing](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing).
 
-### Measured comparison: Auto, Decision Router, Sol and Terra
+### New measured pair: Auto versus fixed GPT-6 Luna
+
+On October 28, 2026, two fresh standalone CLI sessions ran this identical prompt in the same clean working directory, with custom instructions and built-in MCPs disabled. Neither session used tools or changed code. The fixed run used `--model gpt-6-luna` directly, without a Decision Router or Azure classifier:
+
+> In three concise bullets, propose a test plan for a responsive ordering app that includes menu, cart, and simulated checkout. Do not use tools.
+
+| Selection | Actual execution model | Input tokens | Output tokens | Cache-read tokens | Copilot AI credits | Model API time |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Auto | GPT-6 Luna | 14,559 | 119 | 0 | 0.1691370 | 3.973 s |
+| Fixed GPT-6 Luna only | GPT-6 Luna | 14,593 | 137 | 9,321 | 0.0820635 | 4.648 s |
+
+![Sanitized usage summary from the actual Auto and fixed Luna CLI records](images/auto-luna-comparison.png)
+*Rendered summary of actual sanitized CLI usage JSON, not a screenshot of the App model picker. No session IDs, prompts containing private data or credentials are included.*
+
+**What this shows:** Auto selected Luna for this prompt, while the other run explicitly fixed Luna. Both proposed responsive layout, cart and checkout checks; fixed Luna explicitly mentioned avoiding real payment. Both also suggested validating checkout details, but this sample checkout is a confirmation dialog without an input form, so that advice needs correction. This is not a quality win or a coding benchmark.
+
+The fixed run read 9,321 cached tokens while Auto read none. Its lower recorded credits **do not establish that fixing Luna is intrinsically cheaper than Auto**; API time is not end-to-end wall time, and usage credits are not the final bill. These two runs are separate from the older four-way sample below; do not combine them into a controlled ranking.
+
+Reproduce without installing the optional router:
+
+```bash
+TASK='In three concise bullets, propose a test plan for a responsive ordering app that includes menu, cart, and simulated checkout. Do not use tools.'
+copilot --model auto --no-custom-instructions --no-auto-update --disable-builtin-mcps --disable-mcp-server mcd-mcp --no-ask-user -p "$TASK" --usage-output-file auto-usage.json
+copilot --model gpt-6-luna --no-custom-instructions --no-auto-update --disable-builtin-mcps --disable-mcp-server mcd-mcp --no-ask-user -p "$TASK" --usage-output-file luna-usage.json
+```
+
+Keep raw records private. From `lab1/code`, inspect the included sanitized pair with:
+
+```bash
+python3 compare_usage.py Auto=usage-example/auto-vs-luna-auto.json FixedLuna=usage-example/auto-vs-luna-fixed.json
+```
+
+### Historical optional comparison: Auto, Decision Router, Sol and Terra
 
 The following is a real one-run demonstration from October 28, 2026, using the **same non-sensitive prompt**, working directory, `--no-custom-instructions`, and a fresh CLI session for each run. The Decision row used the private router's **startup routing** and the Azure classifier described in the next section; it is not an App model-picker integration. The prompt was:
 
@@ -129,6 +161,6 @@ If the router does not appear, verify Node version, private repo access, CLI exp
 
 ## Evidence and completion
 
-Capture **your own** redacted screenshots: (1) Copilot App showing the plan and Auto picker; (2) Edge at each of the three viewport sizes; (3) optional Foundry deployment details with endpoint/key hidden and the CLI router selection. The reference image above is not a substitute for these screenshots.
+Capture **your own** redacted screenshots: (1) Copilot App showing the plan and the Auto/fixed Luna selections and responses; (2) Edge at each of the three viewport sizes; (3) optional Foundry deployment details with endpoint/key hidden and the CLI router selection. The reference images above are not substitutes for these screenshots.
 
-You are done when the app works at all three sizes, the UI handles an API outage, tests pass, and checkout is simulated. Keep the project for [Lab 2](../lab2/).
+You are done when the app works at all three sizes, the UI handles an API outage, tests pass, checkout is simulated, and the same-prompt Auto/fixed Luna comparison is recorded (or model unavailability is documented). Keep the project for [Lab 2](../lab2/).

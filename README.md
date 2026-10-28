@@ -6,7 +6,7 @@ In this **60-minute** hands-on workshop, you will use **GitHub Copilot App** to 
 
 | Lab | Outcome | Suggested time |
 | --- | --- | --- |
-| [Lab 1: Build and route](lab1/) | Responsive front end, local API and a focused Auto task | 20 min |
+| [Lab 1: Build and compare](lab1/) | Responsive app and same-task Auto versus fixed GPT-6 Luna | 20 min |
 | [Lab 2: Connect MCP](lab2/) | Connect MCP and query real read-only coupon information | 15 min |
 | [Lab 3: Guided ordering in a canvas](lab3/) | Real MCP wizard, menu handling and explicit approval gates | 25 min |
 | **Total** | **Three labs, one continuous application** | **60 min** |
@@ -17,8 +17,8 @@ Install tools, restore sample dependencies, sign in, and prepare your own privat
 
 - Install [GitHub Copilot App](https://github.com/features/copilot/copilot-app), Git, Node.js 22.16 or later and Microsoft Edge. Sign in with an account entitled to use Copilot. Menus and model availability vary by version and policy.
 - Have a mainland China McDonald's account and access to [open.mcd.cn](https://open.mcd.cn/) for Labs 2–3. Terms, account eligibility, service availability, and tool schemas can change.
-- Lab 1's optional Decision Router requires access to the private [router repository](https://github.com/kinfey/decision-ghc-router), Copilot CLI and an Azure subscription with a Microsoft Foundry deployment of Microsoft-Decision-1. Auto requires none of these additional router prerequisites.
-- Work in a **new local project**, separate from this tutorial repository. Keep one continuous application and session across the three labs.
+- Lab 1's optional Decision Router requires access to the private [router repository](https://github.com/kinfey/decision-ghc-router), Copilot CLI and an Azure subscription with a Microsoft Foundry deployment of Microsoft-Decision-1. Auto and fixed GPT-6 Luna require none of these additional router prerequisites.
+- Work in a **new local project**, separate from this tutorial repository. Keep one continuous application and main session across the three labs; use separate fresh, read-only sessions for Lab 1's model comparison.
 - Real services and models can incur charges. Never publish API keys, tokens, private endpoints, addresses, order details or screenshots containing them. Use your own credentials and rotate any that have been exposed.
 
 Each lab has an English `README.md` and a Simplified Chinese `README.zh.md`. The guides distinguish public-documentation screenshots from actual App and Edge captures of the workshop implementation. Real-service screenshots must never expose credentials or account information.
